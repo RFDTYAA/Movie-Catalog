@@ -1,29 +1,33 @@
 import Foundation
 
-struct MovieListResponse: Codable {
-    let results: [MovieResponse]
+// JADIKAN PUBLIC
+public struct MovieListResponse: Codable {
+    public let results: [MovieResponse]
 }
 
-struct MovieResponse: Codable {
-    let id: Int
-    let title: String
-    let poster_path: String?
-    let overview: String?
-    let release_date: String?
-    let vote_average: Double?
+// JADIKAN PUBLIC BESERTA SEMUA PROPERTINYA
+public struct MovieResponse: Codable {
+    public let id: Int
+    public let title: String
+    public let poster_path: String?
+    public let overview: String?
+    public let release_date: String?
+    public let vote_average: Double?
 }
 
-struct MovieDetailResponse: Codable {
-    let id: Int
-    let title: String
-    let poster_path: String?
-    let overview: String?
-    let release_date: String?
-    let vote_average: Double?
-    let genres: [Genre]
+// JADIKAN PUBLIC BESERTA SEMUA PROPERTINYA
+public struct MovieDetailResponse: Codable {
+    public let id: Int
+    public let title: String
+    public let poster_path: String?
+    public let overview: String?
+    public let release_date: String?
+    public let vote_average: Double?
+    public let genres: [Genre]
 
-    struct Genre: Codable {
-        let id: Int
-        let name: String
+    // Struct di dalamnya juga harus public
+    public struct Genre: Codable {
+        public let id: Int
+        public let name: String
     }
 }

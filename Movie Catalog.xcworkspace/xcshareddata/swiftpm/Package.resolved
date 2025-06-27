@@ -1,5 +1,5 @@
 {
-  "originHash" : "2b639b04525b8fb0c65947a9b6144d14e0e5b0fbea80dd7b092b4b266ef0ff90",
+  "originHash" : "1e0e1c386a11f9bddb4d3727f0c417844a2bf10fe615eb2c157765fb70c063da",
   "pins" : [
     {
       "identity" : "alamofire",
@@ -8,6 +8,15 @@
       "state" : {
         "revision" : "513364f870f6bfc468f9d2ff0a95caccc10044c5",
         "version" : "5.10.2"
+      }
+    },
+    {
+      "identity" : "kingfisher",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/onevcat/Kingfisher.git",
+      "state" : {
+        "revision" : "010a06c4387cea2d13606222b6c08e0454e6dd2d",
+        "version" : "8.3.3"
       }
     },
     {

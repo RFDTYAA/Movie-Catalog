@@ -1,46 +1,35 @@
 import SwiftUI
-import Core
+import Core // Butuh 'Movie'
+import Kingfisher
 
 public struct MovieRowView: View {
-    let movie: Movie
-    let isFavorite: Bool
-    var showFavoriteButton: Bool = true
-    var onToggleFavorite: () -> Void
-
-    // Initializer juga harus public
-        public init(movie: Movie, isFavorite: Bool, showFavoriteButton: Bool = true, onToggleFavorite: @escaping () -> Void) {
-            self.movie = movie
-            self.isFavorite = isFavorite
-            self.showFavoriteButton = showFavoriteButton
-            self.onToggleFavorite = onToggleFavorite
-        }
+    public let movie: Movie
+    public let isFavorite: Bool
+    public var showFavoriteButton: Bool
+    public var onToggleFavorite: () -> Void
     
+    public init(movie: Movie, isFavorite: Bool, showFavoriteButton: Bool = true, onToggleFavorite: @escaping () -> Void) {
+        self.movie = movie
+        self.isFavorite = isFavorite
+        self.showFavoriteButton = showFavoriteButton
+        self.onToggleFavorite = onToggleFavorite
+    }
+
     public var body: some View {
         HStack(spacing: 16) {
-          
-            AsyncImage(
-                url: URL(string: Constants.imageBaseURL + (movie.posterPath ?? "")),
-                transaction: Transaction(animation: .easeInOut(duration: 0.3))
-            ) { phase in
-                if let image = phase.image {
-                    image
+            KFImage(URL(string: Constants.imageBaseURL + (movie.posterPath ?? "")))
+                .placeholder {
+                    // Beritahu Image untuk mencari di bundle aplikasi utama
+                    Image("placeholder_poster", bundle: .main)
                         .resizable()
                         .scaledToFill()
-                } else if phase.error != nil {
-                    Image("placeholder_poster")
-                        .resizable()
-                        .scaledToFill()
-                        .background(Color.theme.secondaryText.opacity(0.3))
-                } else {
-                    Image("placeholder_poster")
-                        .resizable()
-                        .scaledToFill()
-                        .background(Color.theme.secondaryText.opacity(0.3))
+                        .frame(width: 80, height: 120)
                 }
-            }
-            .frame(width: 80, height: 120)
-            .cornerRadius(12)
-     
+                .resizable()
+                .scaledToFill()
+                .frame(width: 80, height: 120)
+                .cornerRadius(12)
+
             VStack(alignment: .leading, spacing: 8) {
                 Text(movie.title)
                     .font(.headline)

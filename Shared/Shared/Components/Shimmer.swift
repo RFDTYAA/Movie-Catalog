@@ -24,7 +24,7 @@ public struct Shimmer: ViewModifier {
             set { phase = newValue }
         }
 
-        public func body(content: Content) -> some View {
+        func body(content: Content) -> some View {
             content
                 .mask(
                     LinearGradient(

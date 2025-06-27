@@ -8,4 +8,3 @@ public protocol MovieRepository {
   func addToFavorite(movie: Movie)
   func removeFromFavorite(id: Int)
 }
-

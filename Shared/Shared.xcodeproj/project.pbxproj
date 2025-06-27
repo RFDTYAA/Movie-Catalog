@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		1D47EEE12E0D31CE00A2C96D /* Shared.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D47EED62E0D31CE00A2C96D /* Shared.framework */; };
 		1D47EF182E0D52D900A2C96D /* Core.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D47EF172E0D52D900A2C96D /* Core.framework */; settings = {ATTRIBUTES = (Required, ); }; };
+		1D6439AC2E0E23AC00F0074D /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = 1D6439AB2E0E23AC00F0074D /* Kingfisher */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -30,6 +31,9 @@
 /* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
 		1D47EEE82E0D31CE00A2C96D /* Exceptions for "Shared" folder in "Shared" target */ = {
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				Info.plist,
+			);
 			publicHeaders = (
 				Shared.h,
 			);
@@ -58,6 +62,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1D6439AC2E0E23AC00F0074D /* Kingfisher in Frameworks */,
 				1D47EF182E0D52D900A2C96D /* Core.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -131,6 +136,7 @@
 			);
 			name = Shared;
 			packageProductDependencies = (
+				1D6439AB2E0E23AC00F0074D /* Kingfisher */,
 			);
 			productName = Shared;
 			productReference = 1D47EED62E0D31CE00A2C96D /* Shared.framework */;
@@ -182,10 +188,14 @@
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
+				id,
 				Base,
 			);
 			mainGroup = 1D47EECC2E0D31CE00A2C96D;
 			minimizedProjectReferenceProxies = 1;
+			packageReferences = (
+				1D6439AA2E0E23AC00F0074D /* XCRemoteSwiftPackageReference "Kingfisher" */,
+			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = 1D47EED72E0D31CE00A2C96D /* Products */;
 			projectDirPath = "";
@@ -253,6 +263,7 @@
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				ENABLE_MODULE_VERIFIER = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = Shared/Info.plist;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -286,6 +297,7 @@
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				ENABLE_MODULE_VERIFIER = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = Shared/Info.plist;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -311,6 +323,7 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
@@ -377,6 +390,7 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
@@ -494,6 +508,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		1D6439AA2E0E23AC00F0074D /* XCRemoteSwiftPackageReference "Kingfisher" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/onevcat/Kingfisher.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 8.3.3;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		1D6439AB2E0E23AC00F0074D /* Kingfisher */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 1D6439AA2E0E23AC00F0074D /* XCRemoteSwiftPackageReference "Kingfisher" */;
+			productName = Kingfisher;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 1D47EECD2E0D31CE00A2C96D /* Project object */;
 }

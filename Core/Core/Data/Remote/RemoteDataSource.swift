@@ -2,16 +2,17 @@ import Foundation
 import Combine
 import Alamofire
 
-protocol RemoteDataSourceProtocol {
+public protocol RemoteDataSourceProtocol {
   func fetchPopular() -> AnyPublisher<[MovieResponse], Error>
   func fetchDetail(id: Int) -> AnyPublisher<MovieDetailResponse, Error>
 }
 
-class RemoteDataSource: RemoteDataSourceProtocol {
+public class RemoteDataSource: RemoteDataSourceProtocol {
   private let api: TMDBAPIProtocol
-  init(api: TMDBAPIProtocol) { self.api = api }
   
-  func fetchPopular() -> AnyPublisher<[MovieResponse], Error> {
+  public init(api: TMDBAPIProtocol) { self.api = api }
+  
+  public func fetchPopular() -> AnyPublisher<[MovieResponse], Error> {
     return AF.request(api.popularURL())
       .publishDecodable(type: MovieListResponse.self)
       .value()
@@ -20,8 +21,8 @@ class RemoteDataSource: RemoteDataSourceProtocol {
       .eraseToAnyPublisher()
   }
   
-  func fetchDetail(id: Int) -> AnyPublisher<MovieDetailResponse, Error> {
-    return AF.request(api.detailURL(id: id)) 
+  public func fetchDetail(id: Int) -> AnyPublisher<MovieDetailResponse, Error> {
+    return AF.request(api.detailURL(id: id))
       .publishDecodable(type: MovieDetailResponse.self)
       .value()
       .mapError { $0 as Error }

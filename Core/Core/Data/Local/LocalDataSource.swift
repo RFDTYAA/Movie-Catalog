@@ -2,17 +2,17 @@ import Combine
 import CoreData
 import Foundation
 
-protocol LocalDataSourceProtocol {
+public protocol LocalDataSourceProtocol {
   func getFavorites() -> AnyPublisher<[MovieEntity], Error>
   func addFavorite(_ movie: Movie)
   func removeFavorite(id: Int)
 }
 
-class LocalDataSource: LocalDataSourceProtocol {
+public class LocalDataSource: LocalDataSourceProtocol {
   private let manager: CoreDataManager
-  init(manager: CoreDataManager) { self.manager = manager }
+  public init(manager: CoreDataManager) { self.manager = manager }
 
-  func getFavorites() -> AnyPublisher<[MovieEntity], Error> {
+  public func getFavorites() -> AnyPublisher<[MovieEntity], Error> {
     Future { promise in
       let fetchRequest: NSFetchRequest<MovieEntity> = MovieEntity.fetchRequest()
       do {
@@ -25,7 +25,7 @@ class LocalDataSource: LocalDataSourceProtocol {
   }
 
 
-  func addFavorite(_ movie: Movie) {
+  public func addFavorite(_ movie: Movie) {
     let e = MovieEntity(context: self.manager.context)
     e.id = Int32(movie.id)
     e.title = movie.title
@@ -35,7 +35,7 @@ class LocalDataSource: LocalDataSourceProtocol {
   }
 
 
-  func removeFavorite(id: Int) {
+  public func removeFavorite(id: Int) {
     let fetchRequest: NSFetchRequest<MovieEntity> = MovieEntity.fetchRequest()
     fetchRequest.predicate = NSPredicate(format: "id==%d", id)
     
