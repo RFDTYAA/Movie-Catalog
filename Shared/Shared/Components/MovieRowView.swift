@@ -1,5 +1,5 @@
 import SwiftUI
-import Core // Butuh 'Movie'
+import Core
 import Kingfisher
 
 public struct MovieRowView: View {
@@ -7,6 +7,12 @@ public struct MovieRowView: View {
     public let isFavorite: Bool
     public var showFavoriteButton: Bool
     public var onToggleFavorite: () -> Void
+
+    // Helper untuk mendapatkan bundle modul Shared
+    private var currentBundle: Bundle {
+        class BundleFinder {}
+        return Bundle(for: BundleFinder.self)
+    }
     
     public init(movie: Movie, isFavorite: Bool, showFavoriteButton: Bool = true, onToggleFavorite: @escaping () -> Void) {
         self.movie = movie
@@ -19,8 +25,8 @@ public struct MovieRowView: View {
         HStack(spacing: 16) {
             KFImage(URL(string: Constants.imageBaseURL + (movie.posterPath ?? "")))
                 .placeholder {
-                    // Beritahu Image untuk mencari di bundle aplikasi utama
-                    Image("placeholder_poster", bundle: .main)
+                    // PERBAIKAN: Gunakan `currentBundle` untuk mencari gambar
+                    Image("placeholder_poster", bundle: currentBundle)
                         .resizable()
                         .scaledToFill()
                         .frame(width: 80, height: 120)
